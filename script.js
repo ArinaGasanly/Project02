@@ -1,25 +1,32 @@
-let number = prompt('Угадай число от 1 до 100', '');
+function isNum(userNumber) {
+  userNumber = !isNaN(parseFloat(userNumber)) && isFinite(userNumber);
+}
+const game = function () {
+  const randomNumber = Math.floor((Math.random() * 100) + 1);
 
-function guessNumber() {
-  if (number > 100)
-    console.log('Загаданное число меньше');
+  return function repeat() {
+    let userNumber = prompt('Введи число!');
+    if (userNumber === null) {
+      alert('Игра окончена!');
 
-  if (number < 1)
-    console.log('Загаданное число больше');
+    }
+    if (userNumber < randomNumber) {
+      alert('Загаданное число меньше');
 
-  if (number == 77)
-    console.log('Поздравляю, Вы угадали!!!');
+    }
+    else if (userNumber > randomNumber) {
+      alert('Загаданное число больше');
 
-
-  function isNumber() {
-    let sayNumber = confirm('Введи число!');
-    return (typeof number != number || typeof false != number);
-
+    }
+    else {
+      alert('Поздравляю, Вы угадали!!!');
+      return repeat() 
+     
+    }
+    
   }
-  isNumber()
-  console.log('Игра окончена');
-
-
+  
 }
 
-guessNumber(77)
+
+
