@@ -6,10 +6,7 @@ function gameStart() {
 
   return function repeat() {
     let userNumber = prompt('Введи число!');
-    if (userNumber === null) {
-      alert('Игра окончена!');
 
-    }
     if (userNumber > randomNumber) {
       alert('Загаданное число меньше');
       return repeat()
@@ -18,9 +15,13 @@ function gameStart() {
       alert('Загаданное число больше');
       return repeat()
     }
-    else if (!isNumber(userNumber)) {
-      alert('Вы ввели не число, попробуйте ещё раз!');
+    else if (isNaN(userNumber)) {
+      alert('Это не число!');
       return repeat()
+    }
+    else if (userNumber === null) {
+      alert('Игра окончена');
+
     }
     else {
       alert('Поздравляю, Вы угадали!!!');
