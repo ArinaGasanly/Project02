@@ -1,7 +1,7 @@
 function isNum(userNumber) {
   userNumber = !isNaN(parseFloat(userNumber)) && isFinite(userNumber);
 }
-const game = function () {
+function gameStart() {
   const randomNumber = Math.floor((Math.random() * 100) + 1);
 
   return function repeat() {
@@ -10,23 +10,26 @@ const game = function () {
       alert('Игра окончена!');
 
     }
-    if (userNumber < randomNumber) {
+    if (userNumber > randomNumber) {
       alert('Загаданное число меньше');
-
+      return repeat()
     }
-    else if (userNumber > randomNumber) {
+    if (userNumber < randomNumber) {
       alert('Загаданное число больше');
-
+      return repeat()
+    }
+    else if (!isNumber(userNumber)) {
+      alert('Вы ввели не число, попробуйте ещё раз!');
+      return repeat()
     }
     else {
       alert('Поздравляю, Вы угадали!!!');
-      return repeat() 
-     
+      
+
     }
-    
+
   }
-  
+
 }
 
-
-
+gameStart()()
